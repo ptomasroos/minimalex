@@ -15,6 +15,7 @@ import {
 
 import {
   createRouter,
+  createFocusAwareComponent,
   StackNavigation,
   TabNavigation,
   TabNavigationItem as TabItem,
@@ -36,7 +37,7 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-        <Text>HomeScreen!</Text>
+        <Text>HomeScreen! isFocused {this.props.isFocused.toString()}</Text>
         <TouchableOpacity
           onPress={() => {
             this.props.navigation.performAction(({ tabs, stacks }) => {
@@ -67,7 +68,7 @@ class PostsScreen extends React.Component {
   render() {
     return (
       <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-        <Text>PostsScreen!</Text>
+        <Text>PostsScreen! isFocused {this.props.isFocused.toString()}</Text>
       </View>
     )
   }
@@ -88,7 +89,7 @@ class ProfileScreen extends React.Component {
   render() {
     return (
       <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-        <Text>ProfileScreen!</Text>
+        <Text>ProfileScreen! isFocused {this.props.isFocused.toString()}</Text>
         <TouchableOpacity
           onPress={() => {
             this.props.navigator.push(Router.getRoute('profile2'));
@@ -116,7 +117,7 @@ class Profile2Screen extends React.Component {
   render() {
     return (
       <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-        <Text>Profile2Screen!</Text>
+        <Text>Profile2Screen! isFocused {this.props.isFocused.toString()}</Text>
       </View>
     )
   }
@@ -124,10 +125,10 @@ class Profile2Screen extends React.Component {
 
 
 const Router = createRouter(() => ({
-  home: () => HomeScreen,
-  posts: () => PostsScreen,
-  profile: () => ProfileScreen,
-  profile2: () => Profile2Screen,
+  home: () => createFocusAwareComponent(HomeScreen),
+  posts: () => createFocusAwareComponent(PostsScreen),
+  profile: () => createFocusAwareComponent(ProfileScreen),
+  profile2: () => createFocusAwareComponent(Profile2Screen),
 }));
 
 // Treat the TabScreen route like any other route -- you may want to set
