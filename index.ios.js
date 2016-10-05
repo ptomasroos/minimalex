@@ -89,6 +89,13 @@ class ProfileScreen extends React.Component {
     return (
       <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
         <Text>ProfileScreen!</Text>
+        <TouchableOpacity
+          onPress={() => {
+            this.props.navigator.push(Router.getRoute('profile2'));
+          }}
+        >
+          <Text>This works to push, click me!</Text>
+        </TouchableOpacity>
       </View>
     )
   }
