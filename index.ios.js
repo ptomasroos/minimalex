@@ -15,7 +15,6 @@ import {
 
 import {
   createRouter,
-  createFocusAwareComponent,
   StackNavigation,
   TabNavigation,
   TabNavigationItem as TabItem,
@@ -125,10 +124,10 @@ class Profile2Screen extends React.Component {
 
 
 const Router = createRouter(() => ({
-  home: () => createFocusAwareComponent(HomeScreen),
-  posts: () => createFocusAwareComponent(PostsScreen),
-  profile: () => createFocusAwareComponent(ProfileScreen),
-  profile2: () => createFocusAwareComponent(Profile2Screen),
+  home: () => HomeScreen,
+  posts: () => PostsScreen,
+  profile: () => ProfileScreen,
+  profile2: () => Profile2Screen,
 }));
 
 // Treat the TabScreen route like any other route -- you may want to set
